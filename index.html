@@ -72,6 +72,8 @@
     transition:background .3s ease,color .3s ease;
   }
   .form button:hover{background:transparent;color:var(--white)}
+  .form button:disabled{opacity:.55;cursor:default;background:var(--white);color:var(--green)}
+  .form .hp{position:absolute!important;left:-9999px!important;opacity:0;height:0;width:0}
   .form__msg{
     min-height:16px;text-align:center;font-size:11px;letter-spacing:.04em;
     color:rgba(255,255,255,.85);
@@ -101,15 +103,16 @@
     <div class="count__cell"><div class="count__num" id="s">00</div><div class="count__label">Secondes</div></div>
   </div>
 
-  <div class="form">
+  <form class="form" id="waitlist" novalidate>
     <div class="form__row">
-      <input type="text" id="nom" placeholder="Nom" aria-label="Nom">
-      <input type="text" id="prenom" placeholder="Prénom" aria-label="Prénom">
+      <input type="text" id="nom" name="nom" placeholder="Nom" aria-label="Nom" autocomplete="family-name">
+      <input type="text" id="prenom" name="prenom" placeholder="Prénom" aria-label="Prénom" autocomplete="given-name">
     </div>
-    <input type="email" id="email" placeholder="Adresse e-mail" aria-label="Adresse e-mail">
-    <button type="button" id="send">Prévenez-moi</button>
-    <p class="form__msg" id="msg"></p>
-  </div>
+    <input type="email" id="email" name="email" placeholder="Adresse e-mail" aria-label="Adresse e-mail" autocomplete="email">
+    <input type="checkbox" name="botcheck" id="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" id="send">Prévenez-moi</button>
+    <p class="form__msg" id="msg" aria-live="polite"></p>
+  </form>
 
   <p class="soon__legal">Un seul e-mail : celui du lancement.</p>
 </main>
@@ -128,19 +131,56 @@
   }
   tick(); setInterval(tick, 1000);
 
-  document.getElementById('send').addEventListener('click', function(){
+  var ACCESS_KEY = '21004183-07fa-4ef9-90d9-5beecc686256';
+  var form = document.getElementById('waitlist');
+  var btn = document.getElementById('send');
+  var msg = document.getElementById('msg');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (document.getElementById('botcheck').checked) return;
+
     var nom = document.getElementById('nom').value.trim();
     var prenom = document.getElementById('prenom').value.trim();
     var email = document.getElementById('email').value.trim();
-    var msg = document.getElementById('msg');
     if (!nom || !prenom || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
       msg.textContent = 'Merci de remplir les trois champs.';
       return;
     }
-    msg.textContent = 'Merci ' + prenom + ', vous \u00eates sur la liste.';
-    document.getElementById('nom').value = '';
-    document.getElementById('prenom').value = '';
-    document.getElementById('email').value = '';
+
+    var label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Envoi…';
+    msg.textContent = '';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: ACCESS_KEY,
+        subject: 'ANOA — nouvelle inscription à la liste',
+        from_name: 'ANOA — Coming soon',
+        nom: nom,
+        prenom: prenom,
+        email: email
+      })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (data && data.success) {
+        msg.textContent = 'Merci ' + prenom + ', vous êtes sur la liste.';
+        form.reset();
+      } else {
+        msg.textContent = 'Envoi impossible pour le moment, merci de réessayer.';
+      }
+    })
+    .catch(function(){
+      msg.textContent = 'Envoi impossible pour le moment, merci de réessayer.';
+    })
+    .then(function(){
+      btn.disabled = false;
+      btn.textContent = label;
+    });
   });
 </script>
 </body>
