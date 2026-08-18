@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANOA — Bientôt disponible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#5C6249;--white:#fff;
+    --font-body:'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif;
+    --font-display:'EB Garamond','Times New Roman',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--green);color:var(--white);font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+    padding:48px 24px;
+  }
+  .soon{width:100%;max-width:560px;text-align:center}
+  .soon__logo{width:clamp(150px,26vw,230px);height:auto;color:var(--white);margin:0 auto;display:block}
+
+  .soon__eyebrow{
+    margin-top:clamp(34px,5vw,52px);
+    font-size:10px;letter-spacing:.3em;text-transform:uppercase;opacity:.75;
+  }
+  .soon__title{
+    font-family:var(--font-display);font-weight:400;
+    font-size:clamp(28px,4.4vw,44px);line-height:1.15;margin-top:14px;
+  }
+  .soon__copy{
+    margin:16px auto 0;max-width:400px;
+    font-size:12.5px;line-height:1.8;color:rgba(255,255,255,.8);
+  }
+
+  .count{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:clamp(6px,2vw,18px);
+    margin:clamp(34px,5vw,48px) 0;
+  }
+  .count__cell{
+    border:1px solid rgba(255,255,255,.3);
+    padding:clamp(14px,2.4vw,20px) 4px clamp(11px,2vw,16px);
+  }
+  .count__num{
+    font-family:var(--font-display);font-size:clamp(26px,5vw,40px);
+    line-height:1;font-variant-numeric:tabular-nums;
+  }
+  .count__label{
+    margin-top:9px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(255,255,255,.7);
+  }
+
+  .form{display:flex;flex-direction:column;gap:10px;text-align:left}
+  .form__row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .form input{
+    width:100%;border:1px solid rgba(255,255,255,.38);background:transparent;
+    padding:15px 16px;font-family:var(--font-body);font-size:12.5px;
+    letter-spacing:.03em;color:var(--white);
+  }
+  .form input::placeholder{color:rgba(255,255,255,.6)}
+  .form input:focus{outline:none;border-color:var(--white)}
+  .form button{
+    margin-top:6px;width:100%;cursor:pointer;
+    border:1px solid var(--white);background:var(--white);color:var(--green);
+    padding:15px 20px;font-family:var(--font-body);
+    font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+    transition:background .3s ease,color .3s ease;
+  }
+  .form button:hover{background:transparent;color:var(--white)}
+  .form__msg{
+    min-height:16px;text-align:center;font-size:11px;letter-spacing:.04em;
+    color:rgba(255,255,255,.85);
+  }
+  .soon__legal{
+    margin-top:26px;font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.55);
+  }
+  @media (max-width:520px){
+    .form__row{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<main class="soon">
+  <svg class="soon__logo" viewBox="38.38 201.87 401.40 105.24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" role="img" aria-label="ANOA"><path d="M72.4535 203.084C76.3116 202.984 80.9352 202.851 84.7526 203.16C86.1743 205.7 87.6686 209.282 88.8809 212.005L94.9874 225.701L119.032 279.383L126.505 296.128C127.851 299.153 129.471 303.121 131.011 305.919C127.131 306.205 122.172 306.071 118.279 305.987C116.287 300.905 113.485 295.026 111.229 290.009C107.98 282.663 104.655 275.351 101.254 268.074L101.094 272.711C100.646 277.188 99.5162 281.571 97.7431 285.707C94.0123 294.155 87.0827 300.778 78.4746 304.123C75.4123 305.293 73.1239 305.596 69.9171 305.918C54.6686 307.576 40.0394 298.299 39.4122 282.021C38.3574 254.644 64.8306 236.896 70.6636 211.389C71.1703 209.173 71.5933 204.959 72.4535 203.084ZM73.8616 296.387C82.9652 294.95 87.9413 290.965 93.7823 283.718C97.5833 279.002 100.424 271.138 99.3185 265.071C98.6432 261.364 95.3809 254.832 93.7233 251.134L85.3419 232.452C84.0426 229.556 74.7325 208.057 73.5748 207.173C72.1215 216.432 67.6676 226 63.3007 234.228C54.8814 250.091 40.4912 270.357 52.8519 288.055C57.9357 295.334 65.5502 296.749 73.8616 296.387Z"/><path d="M142.313 203.067C145.43 203.022 156.534 202.203 158.613 204.297C178.036 223.862 197.694 243.526 214.06 265.805C215.886 268.29 217.574 270.866 219.433 273.339C218.57 266.42 218.204 258.256 217.402 251.02C215.465 234.983 213.296 218.975 210.897 203C214.703 202.951 218.511 202.983 222.317 203.097C222.103 205.588 222.237 209.406 222.236 212.043L222.226 228.294L222.232 282.549L222.211 295.746C222.215 297.529 222.865 305.738 220.827 306.016C219.815 304.961 219.203 300.118 218.623 298.262C216.918 292.801 214.66 288.813 211.946 283.87C204.081 269.715 187.779 250.976 176.914 239.086C166.295 227.448 155.367 216.095 144.143 205.039C144.566 216.237 144.489 226.933 145.274 238.289C146.389 254.406 148.334 269.315 150.605 285.25L152.361 297.63C152.72 300.21 153.081 303.63 153.744 306.034L142.149 306.048C142.402 302.939 142.247 297.185 142.251 293.899L142.286 270.859L142.313 203.067Z"/><path d="M285.344 203.877C313.264 203.368 336.323 225.564 336.879 253.484C337.434 281.404 315.276 304.5 287.358 305.102C259.373 305.706 236.21 283.484 235.653 255.498C235.097 227.513 257.357 204.387 285.344 203.877ZM288.881 303.911C298.876 302.695 307.075 297.56 313.275 289.658C330.481 267.725 328.339 230.026 305.992 212.265C300.443 207.855 291.398 204.33 284.224 205.349C278.161 205.93 273.622 207.423 268.392 211.03C241.811 229.361 241.291 275.838 265.595 296.217C272.274 301.817 280.019 304.441 288.881 303.911Z"/><path d="M380.214 203.043C383.768 202.994 389.235 202.814 392.675 203.209L423.8 272.697L433.491 294.381C434.946 297.648 437.117 302.985 438.786 305.971C434.584 306.082 430.225 306.167 426.033 305.956C422.481 297.749 418.842 289.581 415.116 281.452C413.221 277.242 411.222 272.475 409.227 268.374C409.065 269.621 408.99 271.045 408.895 272.312C408.339 276.697 407.683 280.196 406.035 284.363C402.629 293.024 395.911 299.971 387.368 303.663C380.113 306.792 370.236 306.891 362.869 303.984C352.239 299.788 346.883 290.563 347.128 279.28C347.486 262.803 358.305 249.249 366.851 235.987C369.393 232.115 371.698 228.092 373.755 223.942C375.864 219.771 377.452 215.357 378.484 210.799C378.927 208.792 379.517 204.75 380.214 203.043ZM381.693 296.376C390.568 294.896 396.225 290.838 401.599 283.632C411.784 269.973 406.32 261.86 400.325 248.565L390.611 226.932L385.017 214.402C384.204 212.584 382.787 209.151 381.81 207.649L381.2 207.308C380.261 215.861 374.821 227.277 370.765 234.786C362.066 250.891 347.862 271.485 361.394 289.134C366.071 295.233 374.407 297.029 381.693 296.376Z"/></svg>
+
+  <p class="soon__eyebrow">Bientôt disponible</p>
+  <h1 class="soon__title">Riviera 26</h1>
+  <p class="soon__copy">Notre tout premier chapitre s’ouvre le 30 septembre à 10h. Laissez vos coordonnées pour accéder à la collection en avant-première.</p>
+
+  <div class="count" id="count" aria-live="polite">
+    <div class="count__cell"><div class="count__num" id="d">00</div><div class="count__label">Jours</div></div>
+    <div class="count__cell"><div class="count__num" id="h">00</div><div class="count__label">Heures</div></div>
+    <div class="count__cell"><div class="count__num" id="m">00</div><div class="count__label">Minutes</div></div>
+    <div class="count__cell"><div class="count__num" id="s">00</div><div class="count__label">Secondes</div></div>
+  </div>
+
+  <div class="form">
+    <div class="form__row">
+      <input type="text" id="nom" placeholder="Nom" aria-label="Nom">
+      <input type="text" id="prenom" placeholder="Prénom" aria-label="Prénom">
+    </div>
+    <input type="email" id="email" placeholder="Adresse e-mail" aria-label="Adresse e-mail">
+    <button type="button" id="send">Prévenez-moi</button>
+    <p class="form__msg" id="msg"></p>
+  </div>
+
+  <p class="soon__legal">Un seul e-mail : celui du lancement.</p>
+</main>
+
+<script>
+  var target = new Date('2026-09-30T10:00:00+02:00').getTime();
+  var pad = function(n){ return (n < 10 ? '0' : '') + n; };
+  function tick(){
+    var diff = target - Date.now();
+    if (diff < 0) diff = 0;
+    var sec = Math.floor(diff / 1000);
+    document.getElementById('d').textContent = pad(Math.floor(sec / 86400));
+    document.getElementById('h').textContent = pad(Math.floor(sec / 3600) % 24);
+    document.getElementById('m').textContent = pad(Math.floor(sec / 60) % 60);
+    document.getElementById('s').textContent = pad(sec % 60);
+  }
+  tick(); setInterval(tick, 1000);
+
+  document.getElementById('send').addEventListener('click', function(){
+    var nom = document.getElementById('nom').value.trim();
+    var prenom = document.getElementById('prenom').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var msg = document.getElementById('msg');
+    if (!nom || !prenom || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      msg.textContent = 'Merci de remplir les trois champs.';
+      return;
+    }
+    msg.textContent = 'Merci ' + prenom + ', vous \u00eates sur la liste.';
+    document.getElementById('nom').value = '';
+    document.getElementById('prenom').value = '';
+    document.getElementById('email').value = '';
+  });
+</script>
+</body>
+</html>
